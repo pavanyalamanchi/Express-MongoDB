@@ -1,11 +1,13 @@
 import express from 'express'
 import BlogModel from './schema.js'
+import q2m from 'query-to-mongo'
 
 const blogRouter = express.Router()
 
 blogRouter.get('/', async(req, res, next) => {
     try {
-        const blog = await BlogModel.find()
+        const query = q2m(req.query)
+        const blog = await BlogModel.find(query.criteria)
         res.send(blog)
     } catch (error) {
         console.log(error)
