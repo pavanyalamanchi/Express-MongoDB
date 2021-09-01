@@ -13,7 +13,11 @@ const blogSchema = new Schema({
     author: {
         name: { type: String, required: true },
         avatar: { type: String, required: true }
-    }
+    },
+    comments: [{
+        comment: String,
+        commentDate: Date
+    }]
 }, {
     timestamps: true
 })
