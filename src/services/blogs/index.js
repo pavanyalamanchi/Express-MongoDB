@@ -58,7 +58,7 @@ blogRouter.post('/:blogId/comments', async(req, res, next) => {
         const blog = await BlogModel.findById(req.params.blogId)
         if (blog) {
             const commentToPost = {...req.body, commentDate: new Date() }
-            const comment = await BlogModel.findByIdAndUpdate(req.params.blogId, { $push: { comments: commentToPost } }, { new: true })
+            const comment = await BlogModel.findByIdAndUpdate(req.params.blogId, { $push: { comments: commentToPost } }, { new: true, runValidators: true })
             res.send(comment)
         } else {
             console.log('no blog found')

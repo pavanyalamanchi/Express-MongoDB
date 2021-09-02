@@ -15,9 +15,10 @@ const blogSchema = new Schema({
         avatar: { type: String, required: true }
     },
     comments: [{
-        comment: String,
+        comment: { type: String, required: true },
         commentDate: Date
-    }]
+    }],
+    authors: [{ type: Schema.Types.ObjectId, ref: 'Author' }]
 }, {
     timestamps: true
 })
