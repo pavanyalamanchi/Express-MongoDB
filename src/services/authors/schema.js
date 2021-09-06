@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const { Schema, model } = mongoose.Schema
+const { Schema, model } = mongoose
 
 const authorSchema = new Schema({
     name: { type: String, required: true },
